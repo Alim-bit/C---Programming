@@ -25,6 +25,6 @@ int main(void) {
   assert(gcd(2, 3) == 1);
   assert(gcd(25, 10) == 5);
   assert(gcd(23, 25) == 1);
-  trace_msg("All assertion-based tests passed!");
-  return EXIT_SUCCESS;
+  printf("All assertion-based tests passed!");
+  //return EXIT_SUCCESS;
 }
