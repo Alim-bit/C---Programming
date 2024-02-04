@@ -1,0 +1,49 @@
+#include <math.h> 
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+#include "cs136.h"
+//print_relation_to_mean(sum, count) returns the mean and prints out their mean (rounded towards 0) as well as 
+//the relation between each value and the mean (above, below, equal). 
+int print_relation_to_mean(int sum, int count) {
+  assert(sum >= 0 && count >= 0);
+  int input = read_int();
+  if (input != READ_INT_FAIL) {
+    int mean = print_relation_to_mean(sum + input, count + 1);
+    if (input > mean) {
+      printf("Value (%d) is above the mean.\n", input);
+    } else if (input < mean) {
+      printf("Value (%d) is below the mean.\n", input);
+    } else {
+      printf("Value (%d) is equal to the mean.\n", input);
+    }
+    return mean;
+  } else {
+    int mean = sum / count;
+    printf("The mean is %d.\n", mean);
+    return mean;
+  }
+}
+
+
+
+// print_mean_detail() reads in all numbers from the console and prints out 
+//   their mean as well as the relation between each value and the mean
+//   (above, below, equal).
+// effects: reads from the console
+//          writes to the console
+void print_mean_detail(void) {
+  // use the following printf format strings:
+  //   "The mean is %d.\n"
+  //   "Value (%d) is above the mean.\n"
+  //   "Value (%d) is below the mean.\n"
+  //   "Value (%d) is equal to the mean.\n"
+  // your implementation goes here
+  //recursive_mean(0, 0);
+  print_relation_to_mean(0, 0);
+}
+
+int main(void) {
+  print_mean_detail();
+  return EXIT_SUCCESS;
+}
